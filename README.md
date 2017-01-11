@@ -1,11 +1,26 @@
-# Welcome to SublemacsPro.
+# Welcome to Emacs Pro Essentials (formerly Sublemacspo)
 
-We love Emacs and some of us have been using Emacs for 30 years or more! Our motivation for this
-project is to bring the right amount of the Emacs experience to Sublime, while also recognizing that
-Sublime has some excellent ideas of its own. We appreciate the careful thought the Emacs creator put
-into such basic things as cursor motion, kill and mark rings, incremental search, etc. However,
-Sublime brings with it an extremely powerful multi-cursor concept which is worth embracing. This
-package tries to marry the two where possible and appropriate.
+We are huge fans of Emacs and Sublime Text. Our motivation for this project has been to bring the
+right amount of the Emacs experience to Sublime, while also recognizing that Sublime has some
+excellent ideas of its own. We appreciate the careful thought the Emacs creator put into such basic
+things as cursor motion, kill and mark rings, incremental search, etc. However, Sublime brings with
+it an extremely powerful multi-cursor concept and others which are worth embracing as well. Here we
+have produced a careful implementation of Emacs semantics and enhanced them with modern Sublime
+concepts where possible and appropriate.
+
+### Key Features Overview
+  * Multi-cursor Navigation and Kill Commands for Characters/Words/Lines/S-Expressions
+  * Universal, Numeric, and Negative Argument Handling
+  * Kill Ring with Multi-cursor and Sublime Quick Panel Support
+  * Mark Ring with Multi-cursor Support
+  * Incremental Search with History (regular and regex supported) and Multi-cursor
+    Features
+  * Frame (Window), Window (Window Pane), and Buffer (View) Commands
+  * Switch to Buffer (View) Command
+  * Change Case Commands (upper/lower/title/camelCase/under_score supported)
+  * Zap/Jump to Char and String with Multi-cursor Support
+  * Rectangle and Text/Point Register Commands (not Multi-cursor aware yet)
+  * All Buffers (Views) Auto Complete
 
 The hope is that when you fire up this plugin, your fingers will find many of the key bindings and
 associated behavior completely familiar. We've implemented the universal argument concept (ctrl+u
@@ -16,15 +31,15 @@ familiar, except it has additional features for keeping or skipping matches alon
 when you're done the "kept matches" are available as multi-cursors for further editing.
 
 Everything else is still Sublime and all that that implies: silky smooth performance, great built-in
-automatic function tagging, great single-file, multi-language support, and so on.
+automatic function tagging, great single-file/multi-language support, and so on.
 
 See below for details.
 
 ## Installation
 
-To install SublemacsPro you have to install [Package Control]
+To install Emacs Pro Essentials you have to install [Package Control]
 (http://wbond.net/sublime_packages/package_control) as an automatic package manager for
-Sublime Text. Now, you can easily install SublemacsPro and your installation will never be
+Sublime Text. Now, you can easily install Emacs Pro Essentials and your installation will never be
 outdated. After you install Package Control, hit ``[CMD]-Shift P`` on Mac or ``[Ctrl]-Shift
 P`` on Windows\Linux to open up the command palette and type ``install``. Now select ``Package
 Control: Install Package``. This will load all packages from the remote repository and you can
@@ -32,28 +47,15 @@ select ``sublemacspro`` from the drop-down list.
 
 ## Sublime Text 2 and 3 Support
 
-The main development for Sublemacs is now Sublime Text 3 only. However, there is still the
-branch using the earlier codebase for ST2.
+The main development for Emacs Pro Essentials is now Sublime Text 3 only. There is still the branch
+using the earlier codebase for ST2 but it honestly doesn't have most of the features mentioned.
 
-[https://github.com/grundprinzip/sublemacspro/tree/st2](https://github.com/grundprinzip/sublemacspro/tree/st2)
+[https://github.com/sublime-emacs/sublemacspro/tree/st2](https://github.com/sublime-emacs/sublemacspro/tree/st2)
 
 ## Features and Key Bindings
 The following features have largely been implemented from scratch and are only supported with
 Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/Linux or
 ``option`` on the Mac. ``super`` is the ``Command`` key on the Mac.
-
-### Key Features Overview
-  * Emacs-style Universal, Numeric, and Negative Argument Handling
-  * Emacs-style Kill Ring with Multi-cursor Support and Sublime Quick Panel Selection
-  * Emacs-style Mark Ring with Multi-cursor Support
-  * Emacs-style Incremental Search with History (regular and regex supported)
-  * Emacs-style Frame (Window), Window (Window Pane), and Buffer (View) Commands
-  * Emacs-style Switch to Buffer (View) Command (remembers most recent views)
-  * Change Case Commands (upper,lower,title,camelCase, and Underscore supported)
-  * Zap/Jump to Char and String with Multi-cursor Support
-  * Rectangle and Text/Point Register Commands (not Multi-cursor aware)
-  * Emacs Navigation Commands
-  * All Buffers (Views) Auto Complete
 
 #### Emacs-style Universal, Numeric, and Negative Argument Handling
   * ``ctrl+u``: Emacs universal argument command (so 4^n where n is the number of times
@@ -164,7 +166,7 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * I-search has support for remembering previous searches. You can access previous searches
       with the up and down arrow keys after you initiate a search.
   * *Find and Replace*
-    * ``alt+r``: Not implemented in Sublemacspro so this brings up the default find and
+    * ``alt+r``: Not implemented in Emacs Pro Essentials so this brings up the default find and
       replace of sublime text.
 
 #### Emacs Frame (Window), Window (Window Pane), and Buffer (View) Commands
