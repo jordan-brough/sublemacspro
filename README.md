@@ -9,7 +9,7 @@ have produced a careful implementation of Emacs semantics and enhanced them with
 concepts where possible and appropriate.
 
 ### Key Features Overview
-  * Multi-cursor Navigation and Kill Commands for Characters/Words/Lines/S-Expressions
+  * Navigation and Kill Commands for Characters/Words/Lines/S-Expressions with Multi-cursor Support
   * Universal, Numeric, and Negative Argument Handling
   * Kill Ring with Multi-cursor and Sublime Quick Panel Support
   * Mark Ring with Multi-cursor Support
@@ -64,11 +64,11 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
   * ``meta+0`` ... ``meta+9``: Emacs numeric arguments - you provide a prefix using the numeric
     arguments before a command to run it that many times. E.g., ``meta+2 meta+3 ctrl+f`` means go
     forward 23 characters.
-  * ``alt+-``: Emacs negative argument command - reverses the direction of the command. E.g.,
-    ``meta+2 meta+3 alt+- ctrl+f`` means go backward 23 characters.
+  * ``meta+-``: Emacs negative argument command - reverses the direction of the command. E.g.,
+    ``meta+- meta+2 meta+3 ctrl+f`` means go backward 23 characters.
 
 #### Emacs-style Kill Ring with Multi-cursor Support and Sublime Quick Panel Selection
-  * *Commands that utilize the kill ring
+  * *Commands that utilize the kill ring*
     * ``ctrl+w`` and ``meta+w``: Kill (cut) and copy to the top of the kill ring.
     * ``ctrl+y``: Yank (Paste) from the last entry put into the kill ring.
     * ``meta+y`` and ``shift+meta+y``: Yank-pop forward and backward on the kill ring, but
@@ -166,7 +166,7 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * I-search has support for remembering previous searches. You can access previous searches
       with the up and down arrow keys after you initiate a search.
   * *Find and Replace*
-    * ``alt+r``: Not implemented in Emacs Pro Essentials so this brings up the default find and
+    * ``meta+r``: Not implemented in Emacs Pro Essentials so this brings up the default find and
       replace of sublime text.
 
 #### Emacs Frame (Window), Window (Window Pane), and Buffer (View) Commands
@@ -188,7 +188,7 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * ``ctrl+x }`` or ``ctrl+shift+j``: Make selected window pane narrower.
     * ``ctrl+x {`` or ``ctrl+shift+l``: Make selected window pane shorter.
       * Resize window pane commands accept universal, numeric, and negative arguments so
-        ``alt+5 ctrl+x ^`` will make the selected window taller by 5 times.
+        ``meta+5 ctrl+x ^`` will make the selected window taller by 5 times.
   * *View Commands*
     * ``ctrl+x k``: Delete current view from this window pane.
     * ``ctrl+x K``: Delete oldest n views.
@@ -223,7 +223,7 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
 
 #### Go to File or Symbol
   * ``ctrl+x ctrl+f``: Go to file in a quick panel as implemented by Sublime.
-  * ``ctrl+alt+g``: Go to symbol in the quick panel as implemented by Sublime.
+  * ``ctrl+meta+g``: Go to symbol in the quick panel as implemented by Sublime.
 
 #### Change Case Commands
   * ``meta+c``, ``meta+l``, ``meta+u``: capitalize, lower case, upper case words using the
@@ -235,16 +235,16 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     region/s or the emacs region/s if nothing is highlighted.
     * This use the same ``sbp_change_case`` command as above with the ``use_region`` argument
       set to ``true``, therefor, no ``direction`` argument is needed.
-  * ``ctrl+x ctrl+super+c``, ``ctrl+x ctrl+super+u``: Convert from Underscores to camelCase
+  * ``ctrl+x ctrl+meta+c``, ``ctrl+x ctrl+meta+u``: Convert from Underscores to camelCase
     and vice versa. They operate on highlighted region/s or emacs region/s as ``ctrl+x
     ctrl+u`` above and use the same ``sbp_change_case`` command setting the ``mode`` to
     ``camel`` or ``underscore``.
 
 #### Zap/Jump to Char and String
   * *Zap and Jump Commands*
-    * ``alt+z``: Zap-to-char, delete from current point to the next occurrence of a character and
+    * ``meta+z``: Zap-to-char, delete from current point to the next occurrence of a character and
       includes deleting the character.
-    * ``shift+alt+z`` zap-up-to-char, delete from current point up to but not including the next
+    * ``shift+meta+z`` zap-up-to-char, delete from current point up to but not including the next
       occurrence of a character.
     * ``ctrl+x z`` zap-to-string, delete from current point until next occurrence of the string and
       includes deleting the string.
@@ -293,12 +293,12 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * ``ctrl+p``: Move up a line.
     * ``ctrl+a``: Go to beginning of line (ignores wrapped lines always goes to very
       beginning).
-    * ``alt+m``: Go back to the indentation at the beginning of the line (same as ``ctrl+a``
+    * ``meta+m``: Go back to the indentation at the beginning of the line (same as ``ctrl+a``
       except moves back to the indentation instead of the very start of the line).
     * ``ctrl+e``: Go to end of line (ignores wrapped lines always goes to very end).
-    * ``alt+a``: Go back to soft beginning of the line (doesn't ignore wrapped lines).
+    * ``meta+a``: Go back to soft beginning of the line (doesn't ignore wrapped lines).
   * *Paragraph Level*
-    * ``ctrl+alt+]`` and ``ctrl+alt+[``: Navigate forward and backward paragraphs.
+    * ``ctrl+meta+]`` and ``ctrl+meta+[``: Navigate forward and backward paragraphs.
   * *Page Level*
     * ``meta+,`` and ``meta+.``: Move to beginning and end of the current window view,
       respectively.
@@ -306,7 +306,7 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
         to ``true`` and will push the mark before going to the beginning or end of the current
         window view.
     * ``ctrl+v``: Page down.
-    * ``alt+v``: Page up.
+    * ``meta+v``: Page up.
     * ``ctrl+l``: Center current line in view.
       * Used with numeric arguments, put the current line at the Nth line in the view (E.g. ``meta+5
         ctrl+l`` moves the current line to the 5th line in the view.
@@ -341,11 +341,11 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * ``ctrl+d``: Right delete.
     * ``backspace``: Left delete.
   * *Wrap Lines*
-    * ``alt+j``: Wrap lines using sublime built in function to 100 characters.
+    * ``meta+j``: Wrap lines using sublime built in function to 100 characters.
   * *Indent/Unindent*
     * ``ctrl+c, >``: Indent.
     * ``ctrl+c, <``: Unindent.
-    * ``alt+i``: Insert tab character at cursor ("\t").
+    * ``meta+i``: Insert tab character at cursor ("\t").
   * *Macros*
     * ``ctrl+x, (``: Toggle macro recording.
     * ``ctrl+x, )``: Toggle macro recording.
@@ -353,24 +353,24 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
   * *Exit*
     * ``ctrl+x, ctrl+c``: Save this file.
   * *Shift Indentation of Regions*
-    * ``alt+]``: Shift active mark region or current highlighted region to the right one
+    * ``meta+]``: Shift active mark region or current highlighted region to the right one
     indentation.
-    * ``alt+[``: Shift active mark region or current highlighted region to the left one
+    * ``meta+[``: Shift active mark region or current highlighted region to the left one
     indentation.
   * *White Space Removal*
     * ``meta+backslash``: Delete white space around point.
   * *Auto Complete*
-    * ``alt+/``: Used to bring up Sublime's Auto Complete window.
-    * ``alt+h``: Used to bring up Sublime's Auto Complete window.
+    * ``meta+/``: Used to bring up Sublime's Auto Complete window.
+    * ``meta+h``: Used to bring up Sublime's Auto Complete window.
   * *Find and Replace*
-    * ``alt+r``: Not implemented so brings up default find and replace of sublime.
+    * ``meta+r``: Not implemented so brings up default find and replace of sublime.
 
 ## Important Settings File Options
 
 #### Kill Ring Size
   * Settable by ``sbp_kill_ring_size``.
 
-#### Use Alt Bindings (as well as alt+ for digits) or Super (Command on Mac) Bindings
+#### Use Alt Bindings (as well as meta+ for digits) or Super (Command on Mac) Bindings
   * Default is ``sbp_use_alt_bindings`` set to ``true`` and ``sbp_use_super_bindings`` to false.
     - If you prefer super bindings swap these.
   * To insert digits as their normal characters instead of using Emacs-style numeric arguments,

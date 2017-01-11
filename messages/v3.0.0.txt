@@ -1,0 +1,195 @@
+Emacs Pro Essentials v3.0.0 Update
+==================================
+
+This version of the plugin contains a name change from Sublemacspro to Emacs Pro Essentials.
+
+This change contains a bunch of features that were first released very recently in 2.1.7, but there
+was a bug with the messages which caused this list of changes not to appear. So here they are again,
+with the addition of the name change.
+
+----------
+
+This is a huge update. The details are below.
+
+Meanwhile, we have updated the Readme at the github repo with details on all the key bindings and
+functionality of our Emacs plugin and hope that you find it useful:
+
+    https://github.com/grundprinzip/sublemacspro/blob/master/README.md
+
+Read on for all the changes in this release.
+
+
+
+I-Search
+
+    Fixed a bug where using the previous search string would fail.
+
+    Added support for remembering previous searches. You can access previous searches with the up
+    and down arrow keys after you initiate a search. The number of remembered searches is 64 by
+    default and can be set with the following plugin setting:
+
+        "sbp_isearch_history_size": 64,
+
+    In addition, your search history is preserved when you quit and restart sublime.
+
+
+New: Switch to View Command
+
+    Implemented a better version of emacs "switch-to-buffer" which sorts the views by last used time, so
+    that you get the same experience as regular emacs. Also the top two views are switched so you can
+    easily switch back and forth between them:
+
+        {"keys": ["ctrl+x", "b"], "command": "sbp_switch_to_view"},
+
+    for the original emacs key binding.
+
+    There are optional arguments completion_components=2 and display_components=1 and they both
+    specify the number of components of the view's file name that are displayed. The default
+    configuration displays displays the view's file name and parent directory (the last 2 components
+    of the file path) on the top line and just the last component of the file name on the second
+    line. The completion is performed on the first line. If you set the value of display_components
+    to 0, the second line will be omitted entirely.
+
+New: All View Auto Complete
+
+    I have been using the All Autocomplete plugin for a while but occasionally couldn't understand
+    why strings were not being found. I discovered that there are two reasons: one is it has a
+    built-in limit of 20 views to search, and the other was that there are issues with some syntaxes
+    which prevent some symbols from being found. The issues with specific syntaxes can be considered
+    bugs with those syntaxes, but it doesn't help since I am not going to fix those syntaxes. So I
+    have fixed both those problems to the best of my ability by writing my own completion.
+
+    It is disabled by default.
+
+    To enable it, add the following plugin setting:
+
+        "sbp_use_internal_complete_all_buffers": true,
+
+Fix: Quit Command (ctrl+g)
+
+    The ctrl+g command was dismissing popups and panels AND disabling multi-cursors at the same
+    time, so it was not possible to just dismiss a popup without losing your cursors.
+
+    The command now also takes an optional parameter favor_side="start". This is used when there are
+    multiple cursors or a large selection. The possible values are "start" and "end" and it
+    specifies which side of the selection to use. In the case of multi-cursors, it means the first
+    or last cursor.
+
+    If the start AND the end of the current selection or the set of cursors is NOT currently
+    visible, the plugin automatically chooses the end closest to the current visible area.
+
+New: Close Current View
+
+    This command closes the current view but then selects the most recently used view (like emacs)
+    rather than one of the adjacent views.
+
+New: Close Older Views Commands
+
+    Now that this plugin keeps track of the last used time for views, it's possible to close the N
+    least recently used views. This is a good way to trim the current number of views if you feel
+    like things are getting out of hand.
+
+    Here is the default binding:
+
+    {"keys": ["ctrl+x", "K"], "command": "sbp_close_older_views", "args": {"n_windows": 5}},
+
+Improve: Choose and Yank Command
+
+    The choose and yank command now does a better job of picking the sample text from each kill so
+    that they display better especially when the text is wider than your window.
+
+    Also this command pulls in the external clipboard before showing you the choices. It used to be
+    the case that only the yank command pulled in the external clipboard.
+
+    Here is the default binding:
+
+    {"keys": ["ctrl+x", "ctrl+y"], "command": "sbp_choose_and_yank"},
+
+Improve: Move To Paragraph Command
+
+    This command has been improved in the way it moves over paragraphs.
+
+    It is also now multi-cursor aware.
+
+    WARNING: The direction argument was reversed from what it was supposed to be, and has been
+    fixed, so if you have your own bindings for this command you will have to change direction=1 to
+    direction=-1 and vice versa.
+
+New: Jump to Char/String and Zap to Char/String Commands
+
+    These try to mimic the emacs jump and zap commands. Our implementation is multi-cursor aware. An
+    optional argument decides whether the character your jump to is included (e.g., jumped over) or
+    not. The same applies for the zap commands.
+
+    Here are the default bindings:
+
+    {"keys": ["ctrl+x", "j", "c"], "command": "sbp_jump_to_char", "args": {"include_char": true}},
+    {"keys": ["ctrl+x", "j", "C"], "command": "sbp_jump_to_char", "args": {"include_char": false}},
+    {"keys": ["ctrl+x", "j", "s"], "command": "sbp_jump_to_string", "args": {"include_string": true}},
+    {"keys": ["ctrl+x", "j", "S"], "command": "sbp_jump_to_string", "args": {"include_string": false}},
+    {"keys": ["alt+z"], "command": "sbp_zap_to_char", "args": {"include_char": true},
+        "context": [{"key": "sbp_use_alt_bindings"}]
+    },
+    {"keys": ["shift+alt+z"], "command": "sbp_zap_to_char", "args": {"include_char": false},
+        "context": [{"key": "sbp_use_alt_bindings"}]
+    },
+    {"keys": ["ctrl+x", "z"], "command": "sbp_zap_to_string", "args": {"include_char": true}},
+    {"keys": ["ctrl+x", "Z"], "command": "sbp_zap_to_string", "args": {"include_char": false}},
+
+New: Choose and Yank Register Command
+
+    There is now a choose and yank feature for text registers that mirrors the choose and yank
+    command for the kill ring.
+
+    Here are the default bindings:
+
+    {"keys": ["ctrl+x", "r", "r"], "command": "sbp_choose_and_yank_register"},
+
+New: Choose and Yank Point Command
+
+    There is now a choose and yank feature for point registers that mirrors the choose and yank
+    command for the kill ring.
+
+    Here are the default bindings:
+
+    {"keys": ["ctrl+x", "r", "p"], "command": "sbp_choose_and_yank_point"},
+
+Fix: Upper/Lower Case Region Command
+
+    The C-X C-L/C-U commands to perform upper and lower case changes to the emacs region(s) were not
+    working at all. They are all based on the same command, where you specify arguments for the case
+    change (e.g., mode="upper", mode="lower") and whether we're required to operate on a region
+    (use_region="true"). When use_region is true, there must be a visible selection or selections,
+    OR, there must be an emacs region or regions (e.g., a region defined by mark and point).
+
+    The name of the command has changed so if you have your own bindings the new command name and
+    default bindings are:
+
+    {"keys": ["alt+c"], "command": "sbp_change_case", "args": {"direction": 1, "mode": "title"},
+        "context": [ {"key": "sbp_use_alt_bindings"}]
+    },
+
+    {"keys": ["alt+u"], "command": "sbp_change_case", "args": {"direction": 1, "mode": "upper"},
+        "context": [ {"key": "sbp_use_alt_bindings"}]
+    },
+    {"keys": ["alt+l"], "command": "sbp_change_case", "args": {"direction": 1, "mode": "lower"},
+        "context": [ {"key": "sbp_use_alt_bindings"}]
+    },
+
+    {"keys": ["ctrl+x", "ctrl+u"], "command": "sbp_change_case", "args": {"mode": "upper", "use_region": true}},
+    {"keys": ["ctrl+x", "ctrl+l"], "command": "sbp_change_case", "args": {"mode": "lower", "use_region": true}},
+
+New: Convert Between camelCase and Underscores
+
+    The command to perform upper and lower case changes for regions described above also
+    includes a (mode="camel") which converts from underscores to camelCase and
+    (mode="underscore") which converts from camelCase to underscores.
+
+    The default bindings are shown below:
+
+    {"keys": ["ctrl+x", "ctrl+super+u"], "command": "sbp_change_case", "args": {"mode": "underscore", "use_region": true}},
+    {"keys": ["ctrl+x", "ctrl+super+c"], "command": "sbp_change_case", "args": {"mode": "camel", "use_region": true}},
+
+Credits
+
+    Many thanks to excetara2 for implementing many of these features and making loads of suggestions.
