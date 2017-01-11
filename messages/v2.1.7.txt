@@ -6,10 +6,9 @@ This is a huge update. The details are below.
 Meanwhile, we have updated the Readme at the github repo with details on all the key bindings and
 functionality of our Emacs plugin and hope that you find it useful:
 
-    https://github.com/grundprinzip/sublemacspro/blob/master/README.md
+    https://github.com/sublime-emacs/sublemacspro/blob/master/README.md
 
 Read on for all the changes in this release.
-
 
 
 I-Search
@@ -97,7 +96,7 @@ Improve: Choose and Yank Command
 
     {"keys": ["ctrl+x", "ctrl+y"], "command": "sbp_choose_and_yank"},
 
-Improve: Move To Paragraph Command
+Improve: Move By Paragraph Command
 
     This command has been improved in the way it moves over paragraphs.
 

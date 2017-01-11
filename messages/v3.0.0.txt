@@ -14,7 +14,7 @@ This is a huge update. The details are below.
 Meanwhile, we have updated the Readme at the github repo with details on all the key bindings and
 functionality of our Emacs plugin and hope that you find it useful:
 
-    https://github.com/grundprinzip/sublemacspro/blob/master/README.md
+    https://github.com/sublime-emacs/sublemacspro/blob/master/README.md
 
 Read on for all the changes in this release.
 
@@ -189,6 +189,16 @@ New: Convert Between camelCase and Underscores
 
     {"keys": ["ctrl+x", "ctrl+super+u"], "command": "sbp_change_case", "args": {"mode": "underscore", "use_region": true}},
     {"keys": ["ctrl+x", "ctrl+super+c"], "command": "sbp_change_case", "args": {"mode": "camel", "use_region": true}},
+
+
+
+Notes On The Name Change
+
+    We felt it was time to put Emacs in the name of this plugin and we wanted to get the point
+    across that we've included essential features of Emacs. The github repo name, however, is still
+    sublemacspro so that all the existing settings files continue to work and there is no
+    unnecessary confusion. Also all the command names are still prefixed with "sbp_" so all your
+    private key bindings will also continue to work.
 
 Credits
 

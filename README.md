@@ -43,7 +43,7 @@ Sublime Text. Now, you can easily install Emacs Pro Essentials and your installa
 outdated. After you install Package Control, hit ``[CMD]-Shift P`` on Mac or ``[Ctrl]-Shift
 P`` on Windows\Linux to open up the command palette and type ``install``. Now select ``Package
 Control: Install Package``. This will load all packages from the remote repository and you can
-select ``sublemacspro`` from the drop-down list.
+select ``Emacs Pro Essentials`` from the drop-down list.
 
 ## Sublime Text 2 and 3 Support
 
@@ -102,7 +102,7 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
       fewer cursors than your kill, it will use just as many as it needs.
 
 #### Emacs-style Mark Ring with Multi-cursor Support
-  * *Commands that utilize the kill ring*
+  * *Commands that utilize the mark ring*
     * ``ctrl+space``: Push a new mark onto the ring
     * ``ctrl+x ctrl+x``: Switch point and mark
     * ``ctrl+space ctrl+space``: Push a new mark and activate the mark, which means *highlight
@@ -116,15 +116,17 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * ``ctrl+u ctrl+space``: Pop off the mark/s at the top of the mark ring (most recent
       entry). This will move the cursor to the mark and put the current active mark at that
       location.
-  * *Kill ring implementation details*
-    * Commands such as ``ctrl+y``, ``meta+y``, ``meta+<``, and ``meta+>`` set the mark
-      automatically as they do (and must) in emacs.
+  * *Mark ring implementation details*
+    * ``ctrl+y`` sets the mark automatically as it does (and must for ``meta+y`` to work properly)
+      in emacs.
+    * Commands like ``meta+<`` and ``meta+>`` also set the mark automatically.
     * If you use the mouse to make a selection, it will set the mark and it will become the
       emacs region as well.
   * *Multi-cursor support*
     * You can set the mark with multiple cursors and pop off the mark ring to marks with multiple
       cursors. Furthermore, you can kill and copy using those cursors, and then yank them later as
-      well. All the above commands for manipulating the mark ring (and kill ring) will continue to
+      well.
+    * All the above commands for manipulating the mark ring (and kill ring) will continue to
       work with multiple cursors.
 
 #### Emacs-style Incremental Search with History (regular and regex supported)
