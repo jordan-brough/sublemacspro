@@ -54,8 +54,8 @@ using the earlier codebase for ST2 but it honestly doesn't have most of the feat
 
 ## Features and Key Bindings
 The following features have largely been implemented from scratch and are only supported with
-Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/Linux or
-``option`` on the Mac. ``super`` is the ``Command`` key on the Mac.
+Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/Linux or the
+``option`` key on the Mac. ``super`` is the ``Command`` key on the Mac.
 
 #### Emacs-style Universal, Numeric, and Negative Argument Handling
   * ``ctrl+u``: Emacs universal argument command (so 4^n where n is the number of times
@@ -373,8 +373,9 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
   * Settable by ``sbp_kill_ring_size``.
 
 #### Use Alt Bindings (as well as meta+ for digits) or Super (Command on Mac) Bindings
-  * Default is ``sbp_use_alt_bindings`` set to ``true`` and ``sbp_use_super_bindings`` to false.
-    - If you prefer super bindings swap these.
+  * Default is ``sbp_use_alt_bindings`` set to ``true`` and ``sbp_use_super_bindings`` to ``false``.
+    - If you prefer to use super bindings then swap these or if you prefer to have both super
+      and alt bindings then set both to ``true``.
   * To insert digits as their normal characters instead of using Emacs-style numeric arguments,
     change ``sbp_alt+digit_inserts`` to ``true``.
 
@@ -412,7 +413,8 @@ and make this a fast and beautiful Emacs replacement.
 
 #### Possible Future Package Additions
   * Supplying a numeric argument to ``ctrl+d`` and ``Backspace`` should append to the kill
-    ring.
+    ring. Furthermore, adding killing and yanking a line backwards to append to the kill ring
+    (``meta+0 ctrl+k`` or ``ctrl+u 0 ctrl+k``).
   * Turn the last n marks into multiple cursors.
   * Switch to view works across windows (frames) and not just within a single window.
   * Make the registers work with multi-cursors.
