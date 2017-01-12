@@ -141,9 +141,10 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
     * ``ctrl+r``: Move to previous match.
     * ``meta+d``: Keep current match as a future cursor and move to next.
     * ``ctrl+w``: The characters in front of your cursor are appended to your search string.
-    * ``meta+a``: Keep all remaining matches from your current position to the end of the file
-      (or beginning if you're doing a reverse search) are added to the kept matches.
-      * Pressing ``meta+a meta+a`` will wraparound so select all the matches in the whole file.
+    * ``meta+a``: Keep all remaining matches from your current position to the end of the file (or
+      beginning if you're doing a reverse search). Kept matches are are saved as future cursors when
+      isearch is done.
+      * Pressing a second ``meta+a`` will wraparound, selecting all the matches in the whole file.
     * ``backspace``: Move backward in the search history (undo).
       * Will undo any of the above commands moving backwards in the commands run during the
         search one at a time. For example, it will go back to a previous match, delete a
@@ -151,9 +152,9 @@ Sublime Text 3. For the bindings below, ``meta`` is the ``alt`` key on Windows/L
       * When undoing a ``ctrl+w`` append from cursor command, the entire set of characters are
         removed at once. However, if you use ``shift+backspace`` instead, it will remove just one
         character at a time.
-    * ``ctrl+g``: If your search is currently failing, takes you back to the last point your
-      search was succeeding. When your search is succeeding, the search is
-      aborted and you go back to the start.
+    * ``ctrl+g``: If your search is currently failing, takes you back to the last point your search
+      was succeeding. When your search is succeeding, the search is aborted and you go back to the
+      start.
     * ``up``: Access previous history in the search history.
     * ``down``: Access next history in the search history.
     * ``enter``: End your search with all the kept items as multi-cursors.
